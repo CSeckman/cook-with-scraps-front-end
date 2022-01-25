@@ -12,7 +12,7 @@ const LoginForm = props => {
 
   const handleChange = e => {
     props.updateMessage('')
-    setFormData({ ...formData, [e.target.name]: e.target.value })
+    setFormData({ ...formData, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = async evt => {
@@ -38,8 +38,8 @@ const LoginForm = props => {
           type="text"
           autoComplete="off"
           id="email"
-          value={formData.email}
           name="email"
+          value={formData.email}
           onChange={handleChange}
         />
       </div>
