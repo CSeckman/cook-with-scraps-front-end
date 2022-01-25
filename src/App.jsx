@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
+import IngredientSearch from './components/IngredientSearch/IngredientSearch'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
@@ -38,6 +39,10 @@ const App = () => {
         <Route
           path="/recipes"
           element={user ? <MyRecipes /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/search"
+          element={user ? <IngredientSearch /> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
