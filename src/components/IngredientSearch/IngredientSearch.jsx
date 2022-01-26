@@ -13,7 +13,6 @@ const IngredientSearch = ({ user }) => {
   const handleSubmit = async e => {
     e.preventDefault()
     try{
-      console.log(ingredients)
       setIngredients(arr => [...arr, formData.ingredient.toLowerCase()])
       setFormData({
         ingredient:''
@@ -21,6 +20,11 @@ const IngredientSearch = ({ user }) => {
     } catch(err) {
       console.log(err)
     }
+  }
+
+  const handleSubmitIngredients = (ing) => {
+    console.log(ing, "all")
+    
   }
 
 
@@ -53,7 +57,8 @@ const IngredientSearch = ({ user }) => {
         </>
       :
       <h5>No Ingredients Yet!</h5>
-      }
+    }
+    <button onClick={() => handleSubmitIngredients(ingredients)}>Submit Ingredients</button>
     </main>
   )
 }
