@@ -12,10 +12,11 @@ const IngredientSearch = ({ user }) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    try {
-      setIngredients(ingredients.push(formData))
-    } catch (err) {
-      console.log('ingredient not added')
+    try{
+      console.log(ingredients)
+      setIngredients(arr => [...arr, formData.ingredient])
+    } catch(err) {
+      console.log(err)
     }
   }
 
@@ -38,7 +39,9 @@ const IngredientSearch = ({ user }) => {
           value={formData.ingredient}
           onChange={handleChange}
         />
+        <button>Add</button>
       </form>
+      {/* <h5>{ingredients}</h5> */}
     </main>
   )
 }
