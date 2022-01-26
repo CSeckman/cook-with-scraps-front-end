@@ -14,7 +14,7 @@ const IngredientSearch = ({ user }) => {
     e.preventDefault()
     try{
       console.log(ingredients)
-      setIngredients(arr => [...arr, formData.ingredient])
+      setIngredients(arr => [...arr, formData.ingredient.toLowerCase()])
       setFormData({
         ingredient:''
       })
