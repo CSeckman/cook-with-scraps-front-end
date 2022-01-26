@@ -1,12 +1,14 @@
-// import * as tokenService from './tokenService'
+const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}`
 
-// const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}/api/profiles`
+function searchRecipes(ingredients) {
+  console.log(BASE_URL)
+  console.log(ingredients)
+  let queryString = ingredients.join('%2C%20')
+  console.log(queryString)
 
-// async function getAllProfiles() {
-//   const res = await fetch(BASE_URL, {
-//     headers: { Authorization: `Bearer ${tokenService.getToken()}` },
-//   })
-//   return await res.json()
-// }
+  return fetch(`${BASE_URL}/api/recipes/${queryString}`)
+  .then(res => res.json())
+  .catch(err => console.log(err, 'frontend err'))
+}
 
-// export { getAllProfiles }
+export { searchRecipes }
