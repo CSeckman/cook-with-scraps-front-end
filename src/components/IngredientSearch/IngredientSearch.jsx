@@ -15,6 +15,9 @@ const IngredientSearch = ({ user }) => {
     try{
       console.log(ingredients)
       setIngredients(arr => [...arr, formData.ingredient])
+      setFormData({
+        ingredient:''
+      })
     } catch(err) {
       console.log(err)
     }
