@@ -44,7 +44,16 @@ const IngredientSearch = ({ user }) => {
         />
         <button>Add</button>
       </form>
-      {/* <h5>{ingredients}</h5> */}
+      <ul>Ingredients:</ul>
+      {ingredients.length ?
+        <>
+          {ingredients.map((ingredient, idx) => 
+          <li key={idx}>{ingredient}</li>
+          )}
+        </>
+      :
+      <h5>No Ingredients Yet!</h5>
+      }
     </main>
   )
 }
