@@ -84,9 +84,12 @@ const IngredientSearch = ({ user }) => {
           <>
             {results.map((r, idx) => 
             <div className="card" key={idx}>
-              <div className="card-header">
-                <h5>{r.recipe.label}</h5>
-                <p>{r.recipe.url}</p>
+              <div className="card-img-top">
+                <img src={r.recipe.images.SMALL.url} alt="" />
+              </div>
+              <div className="card-body label">
+                <h2>{r.recipe.label}</h2>
+                <a href={r.recipe.url}><p>{r.recipe.url}</p></a>
               </div>
               <div className="card-body">
                 <p>{r.recipe.ingredientLines.join(', ')}</p>
