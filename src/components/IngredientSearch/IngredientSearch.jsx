@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { searchRecipes } from '../../services/recipesService'
 
 const IngredientSearch = ({ user }) => {
-  const [results, setResults] = useState ([])
+  const [results, setResults] = useState([])
   const [ingredients, setIngredients] = useState([])
   const [formData, setFormData] = useState({
     ingredient:''
@@ -28,12 +28,15 @@ const IngredientSearch = ({ user }) => {
     console.log(ing, "all")
     try {
       searchRecipes(ing)
-      // .then((apiResults) => {
-      //   setResults(apiResults)
-      // })
-      // .catch(() => {
-      //   console.log("something went wrong with setting api results");
-      // })
+      .then((apiResults) => {
+        // let recipes = apiResults.hits
+        console.log(apiResults.hits)
+        setResults(apiResults.hits)
+        console.log(results, "jsx results after")
+      })
+      .catch((err) => {
+        console.log(err, "something went wrong with setting api results");
+      })
     } catch(err) {
       console.log(err)
     }
@@ -76,7 +79,24 @@ const IngredientSearch = ({ user }) => {
         </div>
       </div>
       <div className="recipe-results-div">
-
+        <h3>Recipes:</h3>
+        {results.length ? 
+          <>
+            {results.map((r, idx) => 
+            <div className="card" key={idx}>
+              <div className="card-header">
+                <h5>{r.recipe.label}</h5>
+                <p>{r.recipe.url}</p>
+              </div>
+              <div className="card-body">
+                <p>{r.recipe.ingredientLines.join(', ')}</p>
+              </div>
+            </div>
+            )}
+          </>
+        :
+        <h5>Submit ingredients to get recipes!</h5>
+        }
       </div>
     </main>
   )
