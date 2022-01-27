@@ -44,7 +44,7 @@ const IngredientSearch = ({ user }) => {
 
 
   return (
-    <main>
+    <main className="ingred-recipes-div">
       <div className="ingredient-div">
         <h1>Enter your ingredients</h1>
         <form 
@@ -85,10 +85,14 @@ const IngredientSearch = ({ user }) => {
             {results.map((r, idx) => 
             <div className="card" key={idx}>
               <div className="card-img-top">
-                <img src={r.recipe.images.SMALL.url} alt="" />
+                {r.recipe.images.SMALL ?
+                  <img src={r.recipe.images.SMALL.url} alt="" />  
+                :
+                <p>No Image</p>
+                }
               </div>
               <div className="card-body label">
-                <h2>{r.recipe.label}</h2>
+                <h4>{r.recipe.label}</h4>
                 <a href={r.recipe.url}><p>{r.recipe.url}</p></a>
               </div>
               <div className="card-body">

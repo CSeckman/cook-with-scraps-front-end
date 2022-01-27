@@ -4,21 +4,17 @@ const NavBar = ({ user, handleLogout }) => {
   return (
     <>
       {user ?
-        <nav>
-          <ul>
-            <li>Welcome, {user.name}</li>
-            <li><Link to="/recipes">My Recipes</Link></li>
-            <li><Link to="/search">Search</Link></li>
-            <li><Link to="" onClick={handleLogout}>LOG OUT</Link></li>
-            <li><Link to="/changePassword">Change Password</Link></li>
-          </ul>
+        <nav className='navbar-brand'>
+            <p>Welcome, {user.name}</p>
+            <p><Link to="/recipes">My Recipes</Link></p>
+            <p><Link to="/search">Search</Link></p>
+            <p><Link to="" onClick={handleLogout}>LOG OUT</Link></p>
+            <p><Link to="/changePassword">Change Password</Link></p>
         </nav>
       :
-        <nav>
-          <ul>
-            <li><Link to="/login">Log In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
-          </ul>
+        <nav className='navbar-brand'>
+            <p><Link to="/login">Log In</Link></p>
+            <p><Link to="/signup">Sign Up</Link></p>
         </nav>
       }
     </>
