@@ -1,3 +1,4 @@
+import * as tokenService from '../services/tokenService'
 const BASE_URL = `${process.env.REACT_APP_BACKEND_SERVER_URL}`
 
 function searchRecipes(ingredients) {
@@ -11,4 +12,19 @@ function searchRecipes(ingredients) {
   .catch(err => console.log(err, 'frontend err'))
 }
 
-export { searchRecipes }
+function saveRecipe (recipe, user) {
+  console.log('services', recipe, user)
+  return fetch(`${BASE_URL}/api/recipes/${user.profile}`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`, 'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(recipe)
+})
+    .then(res => res.json())
+}
+
+export { 
+  searchRecipes, 
+  saveRecipe 
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { searchRecipes } from '../../services/recipesService'
 
-const IngredientSearch = ({ user }) => {
+const IngredientSearch = ( props ) => {
   const [results, setResults] = useState([])
   const [ingredients, setIngredients] = useState([])
   const [formData, setFormData] = useState({
@@ -29,8 +29,6 @@ const IngredientSearch = ({ user }) => {
     try {
       searchRecipes(ing)
       .then((apiResults) => {
-        // let recipes = apiResults.hits
-        console.log(apiResults.hits)
         setResults(apiResults.hits)
         console.log(results, "jsx results after")
       })
@@ -42,6 +40,17 @@ const IngredientSearch = ({ user }) => {
     }
   }
 
+  const handleSaveRecipe = (r) => {
+    let thisRecipe = r.recipe
+    props.handleAddRecipe(thisRecipe)
+    // try {
+    //   // .then (myRecipe => {
+    //   //   console.log(myRecipe, "PERSISTED TO DB")
+    //   // })
+    // } catch(err) {
+    //   console.log(err)
+    // }
+  }
 
   return (
     <main className="ingred-recipes-div">
@@ -94,6 +103,7 @@ const IngredientSearch = ({ user }) => {
               <div className="card-body label">
                 <h4>{r.recipe.label}</h4>
                 <a href={r.recipe.url}><p>{r.recipe.url}</p></a>
+                <button onClick={() => handleSaveRecipe(r)}>Save Recipe</button>
               </div>
               <div className="card-body">
                 <p>{r.recipe.ingredientLines.join(', ')}</p>

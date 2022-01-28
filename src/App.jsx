@@ -8,9 +8,11 @@ import Landing from './pages/Landing/Landing'
 import MyRecipes from './pages/MyRecipes/MyRecipes'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import * as authService from './services/authService'
+import * as recipeService from './services/recipesService'
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser())
+  const [myRecipes, setRecipes] = useState([])
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -22,6 +24,15 @@ const App = () => {
   const handleSignupOrLogin = () => {
     setUser(authService.getUser())
   }
+
+  const handleAddRecipe= (recipe) => {
+    recipeService.saveRecipe(recipe, user)
+    .then (profileWithRecipe => {
+      setRecipes(profileWithRecipe.recipes)
+    })
+    navigate('/recipes', { state: myRecipes })
+  }
+
 
   return (
     <>
@@ -38,11 +49,11 @@ const App = () => {
         />
         <Route
           path="/recipes"
-          element={user ? <MyRecipes /> : <Navigate to="/login" />}
+          element={user ? <MyRecipes myRecipes={myRecipes} /> : <Navigate to="/login" />}
         />
         <Route
           path="/search"
-          element={user ? <IngredientSearch /> : <Navigate to="/login" />}
+          element={user ? <IngredientSearch handleAddRecipe={handleAddRecipe} /> : <Navigate to="/login" />}
         />
         <Route
           path="/changePassword"
