@@ -22,17 +22,17 @@ const MyRecipes = ( props ) => {
         <>
           {allMyRecipes.map((r, idx) => 
             <div className="card" key={idx}>
-              <div className="card-img-top">
+              <div className="img-div">
                 {r.image ?
-                  <img className="recipe-img" src={r.image} alt="" />  
+                  <img className="object-fill" src={r.image} alt="" />  
                 :
                 <p>No Image</p>
                 }
               </div>
               <div className="card-body label">
                 <h4>{r.label}</h4>
-                <a href={r.url}><p>{r.url}</p></a>
-                <button>Delete Recipe</button>
+                <a className='text-gold link' href={r.url}><p>{r.url}</p></a>
+                <button className='border-double border-4 bg-olive rounded text-white'>Delete Recipe</button>
               </div>
               <div className="card-body">
                 <p>{r.ingredientLines.join(', ')}</p>

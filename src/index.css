@@ -21,11 +21,7 @@ code {
   flex-direction: row;
   margin: 10px 30px;
 }
-.card-img-top {
-  width: 200px;
-}
-
-.recipe-img {
+.img-div {
   width: 200px;
 }
 
@@ -39,3 +35,14 @@ code {
   justify-content: space-evenly;
 }
 
+img {
+  max-width: 200px;
+}
+
+.link:hover {
+  color: #6d3a03;
+}
+
+.border-double {
+  padding: 2px 7px;
+}
