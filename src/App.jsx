@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import IngredientSearch from './components/IngredientSearch/IngredientSearch'
@@ -14,14 +14,6 @@ const App = () => {
   const [user, setUser] = useState(authService.getUser())
   const [myRecipes, setRecipes] = useState([])
   const navigate = useNavigate()
-
-  useEffect(() => {
-		recipeService.getMyRecipes(user)
-			.then(recipes => {
-        console.log(recipes, "app recs")
-        setRecipes(recipes)
-      })
-	}, [])
 
   const handleLogout = () => {
     authService.logout()

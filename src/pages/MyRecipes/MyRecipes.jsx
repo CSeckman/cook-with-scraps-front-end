@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react'
 import * as recipeService from '../../services/recipesService'
+import { useLocation } from 'react-router-dom'
 
 const MyRecipes = ( props ) => {
+  const location = useLocation()
+
   const [allMyRecipes, setRecipes] = useState([])
   
+
   useEffect(()=> {
     recipeService.getMyRecipes(props.user)
     .then(recipes => {
-      setRecipes(recipes)
+      setRecipes(recipes.reverse())
     })
-  }, [])
+  }, [props.myRecipes])
 
   return (
     <>
