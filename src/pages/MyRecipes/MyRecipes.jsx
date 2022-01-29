@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react'
 import * as recipeService from '../../services/recipesService'
-import { useLocation } from 'react-router-dom'
 
 const MyRecipes = ( props ) => {
-  const location = useLocation()
 
   const [allMyRecipes, setRecipes] = useState([])
   
@@ -13,7 +11,7 @@ const MyRecipes = ( props ) => {
     .then(recipes => {
       setRecipes(recipes.reverse())
     })
-  }, [props.myRecipes])
+  }, [props.user, props.myRecipes])
 
   return (
     <>
@@ -32,7 +30,7 @@ const MyRecipes = ( props ) => {
               <div className="card-body label">
                 <h4>{r.label}</h4>
                 <a className='text-gold link' href={r.url}><p>{r.url}</p></a>
-                <button className='border-double border-4 bg-olive rounded text-white'>Delete Recipe</button>
+                <button className='border-double border-4 bg-red rounded text-white'>Delete Recipe</button>
               </div>
               <div className="card-body">
                 <p>{r.ingredientLines.join(', ')}</p>

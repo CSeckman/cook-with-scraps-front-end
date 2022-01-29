@@ -58,10 +58,8 @@ const IngredientSearch = ( props ) => {
           autoComplete='off'
           onSubmit={handleSubmit}
         >
-          <label htmlFor='ingredient'>
-            Ingredient
-          </label>
           <input 
+            className='border-4 border-double rounded border-black'
             type='text' 
             autoComplete='off'
             id='ingredient'
@@ -69,7 +67,7 @@ const IngredientSearch = ( props ) => {
             value={formData.ingredient}
             onChange={handleChange}
           />
-          <button>Add</button>
+          <button className="border-4 border-double rounded text-white bg-green">Add</button>
         </form>
         <div className="my-ingredients">
           {ingredients.length ?
@@ -82,8 +80,8 @@ const IngredientSearch = ( props ) => {
           :
           ""
           }
-          <button onClick={() => handleSubmitIngredients(ingredients)}>Submit Ingredients</button>
-          <button onClick={() => handleClearIngredients()}>Clear Ingredients</button>
+          <button className="border-4 border-double rounded text-white bg-olive" onClick={() => handleSubmitIngredients(ingredients)}>Submit Ingredients</button>
+          <button className="border-4 border-double rounded text-white bg-orange" onClick={() => handleClearIngredients()}>Clear Ingredients</button>
         </div>
       </div>
       <div className="recipe-results-div">
