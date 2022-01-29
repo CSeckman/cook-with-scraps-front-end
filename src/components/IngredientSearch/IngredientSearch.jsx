@@ -72,15 +72,15 @@ const IngredientSearch = ( props ) => {
           <button>Add</button>
         </form>
         <div className="my-ingredients">
-          <ul>Ingredients:</ul>
           {ingredients.length ?
             <>
+            <ul>Ingredients:</ul>
               {ingredients.map((ingredient, idx) => 
               <li key={idx}>{ingredient}</li>
               )}
             </>
           :
-          <h5>No Ingredients Yet!</h5>
+          ""
           }
           <button onClick={() => handleSubmitIngredients(ingredients)}>Submit Ingredients</button>
           <button onClick={() => handleClearIngredients()}>Clear Ingredients</button>
