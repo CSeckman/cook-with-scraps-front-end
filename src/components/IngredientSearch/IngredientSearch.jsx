@@ -40,16 +40,14 @@ const IngredientSearch = ( props ) => {
     }
   }
 
+  const handleClearIngredients = () => {
+    setIngredients([])
+    setResults([])
+  }
+
   const handleSaveRecipe = (r) => {
     let thisRecipe = r.recipe
     props.handleAddRecipe(thisRecipe)
-    // try {
-    //   // .then (myRecipe => {
-    //   //   console.log(myRecipe, "PERSISTED TO DB")
-    //   // })
-    // } catch(err) {
-    //   console.log(err)
-    // }
   }
 
   return (
@@ -85,6 +83,7 @@ const IngredientSearch = ( props ) => {
           <h5>No Ingredients Yet!</h5>
           }
           <button onClick={() => handleSubmitIngredients(ingredients)}>Submit Ingredients</button>
+          <button onClick={() => handleClearIngredients()}>Clear Ingredients</button>
         </div>
       </div>
       <div className="recipe-results-div">
