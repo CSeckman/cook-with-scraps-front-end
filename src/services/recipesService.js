@@ -12,6 +12,16 @@ function searchRecipes(ingredients) {
   .catch(err => console.log(err, 'frontend err'))
 }
 
+function getMyRecipes (user) {
+  return fetch(`${BASE_URL}/api/recipes/profile/${user.profile}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${tokenService.getToken()}`, 'Content-Type': 'application/json'
+    }
+})
+  .then(res => res.json())
+}
+
 function saveRecipe (recipe, user) {
   console.log('services', recipe, user)
   return fetch(`${BASE_URL}/api/recipes/${user.profile}`, {
@@ -21,10 +31,12 @@ function saveRecipe (recipe, user) {
     },
     body: JSON.stringify(recipe)
 })
-    .then(res => res.json())
+  .then(res => res.json())
 }
+
 
 export { 
   searchRecipes, 
-  saveRecipe 
+  saveRecipe,
+  getMyRecipes
 }

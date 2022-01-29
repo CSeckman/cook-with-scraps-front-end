@@ -1,26 +1,40 @@
 import { useState, useEffect } from 'react'
-import * as recipesService from '../../services/recipesService'
 
-const MyRecipes = () => {
-  // const [allMyRecipes, setRecipes] = useState([])
+const MyRecipes = ( props ) => {
+  const [allMyRecipes, setRecipes] = useState([])
 
-  // useEffect(()=> {
-  //   recipesService.getMyRecipes()
-  //   .then(myRecipes => setRecipes(myRecipes))
-  // }, [])
+  useEffect(()=> {
+    setRecipes(props.myRecipes)
+  }, [])
 
   return (
     <>
       <h1>My Saved Recipes</h1>
-      {/* {allMyRecipes.length ? 
+      {allMyRecipes ?
         <>
-          {allMyRecipes.map(profile=>
-            <p key={profile._id}>{profile.name}</p>
-          )}
+          {allMyRecipes.map((r, idx) => 
+            <div className="card" key={idx}>
+              <div className="card-img-top">
+                {r.image ?
+                  <img src={r.image} alt="" />  
+                :
+                <p>No Image</p>
+                }
+              </div>
+              <div className="card-body label">
+                <h4>{r.label}</h4>
+                <a href={r.url}><p>{r.url}</p></a>
+                <button>Delete Recipe</button>
+              </div>
+              <div className="card-body">
+                <p>{r.ingredientLines.join(', ')}</p>
+              </div>
+            </div>
+            )}
         </>
       :
         <p>No recipes yet</p>
-      } */}
+      }
     </>
   )
 }
