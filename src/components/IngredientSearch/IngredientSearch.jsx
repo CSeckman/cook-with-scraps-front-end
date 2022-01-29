@@ -105,7 +105,7 @@ const IngredientSearch = ( props ) => {
                 <button onClick={() => handleSaveRecipe(r)}>Save Recipe</button>
               </div>
               <div className="card-body">
-                <p>{r.recipe.ingredientLines.join(', ')}</p>
+                <p className="text-gold">{r.recipe.ingredientLines.join(', ')}</p>
               </div>
             </div>
             )}
