@@ -15,7 +15,7 @@ const IngredientSearch = ( props ) => {
   const handleSubmit = async e => {
     e.preventDefault()
     try{
-      setIngredients(arr => [...arr, formData.ingredient.toLowerCase()])
+      setIngredients(arr => [...arr, formData.ingredient.replace(/\s/g , "-").toLowerCase()])
       setFormData({
         ingredient:''
       })
