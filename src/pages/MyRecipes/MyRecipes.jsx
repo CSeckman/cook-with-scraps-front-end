@@ -16,7 +16,7 @@ const MyRecipes = ( props ) => {
             <div className="card" key={idx}>
               <div className="card-img-top">
                 {r.image ?
-                  <img src={r.image} alt="" />  
+                  <img className="recipe-img" src={r.image} alt="" />  
                 :
                 <p>No Image</p>
                 }

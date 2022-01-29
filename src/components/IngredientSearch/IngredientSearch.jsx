@@ -94,8 +94,8 @@ const IngredientSearch = ( props ) => {
             {results.map((r, idx) => 
             <div className="card" key={idx}>
               <div className="card-img-top">
-                {r.recipe.images.SMALL ?
-                  <img src={r.recipe.images.SMALL.url} alt="" />  
+                {r.recipe.image ?
+                  <img className="recipe-img" src={r.recipe.image} alt="" />  
                 :
                 <p>No Image</p>
                 }
