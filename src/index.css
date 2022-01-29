@@ -27,6 +27,18 @@ code {
 
 .label {
   width: 300px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ingred-div {
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  
 }
 
 .navbar-brand {

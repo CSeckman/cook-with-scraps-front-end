@@ -53,7 +53,7 @@ const IngredientSearch = ( props ) => {
   return (
     <main className="ingred-recipes-div">
       <div className="ingredient-div">
-        <h1>Enter your ingredients</h1>
+        <h1>Enter your ingredients here:</h1>
         <form 
           autoComplete='off'
           onSubmit={handleSubmit}
@@ -90,20 +90,20 @@ const IngredientSearch = ( props ) => {
           <>
             {results.map((r, idx) => 
             <div className="card" key={idx}>
-              <div className="w-100">
+              <div className="img-div">
                 {r.recipe.image ?
-                  <img src={r.recipe.image} alt="" />  
+                  <img className="object-fill" src={r.recipe.image} alt="" />  
                 :
                 <p>No Image</p>
                 }
               </div>
-              <div className="card-body label">
+              <div className="label">
                 <h4>{r.recipe.label}</h4>
-                <a href={r.recipe.url}><p>{r.recipe.url}</p></a>
-                <button onClick={() => handleSaveRecipe(r)}>Save Recipe</button>
+                <a className='text-gold link' href={r.recipe.url}><p>{r.recipe.url}</p></a>
+                <button className='border-double border-4 bg-orange rounded text-white' onClick={() => handleSaveRecipe(r)}>Save Recipe</button>
               </div>
-              <div className="card-body">
-                <p className="text-gold">{r.recipe.ingredientLines.join(', ')}</p>
+              <div className="ingred-div">
+                <p className="text-green">{r.recipe.ingredientLines.join(', ')}</p>
               </div>
             </div>
             )}

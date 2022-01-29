@@ -27,13 +27,13 @@ const MyRecipes = ( props ) => {
                 <p>No Image</p>
                 }
               </div>
-              <div className="card-body label">
+              <div className="label">
                 <h4>{r.label}</h4>
                 <a className='text-gold link' href={r.url}><p>{r.url}</p></a>
                 <button className='border-double border-4 bg-red rounded text-white'>Delete Recipe</button>
               </div>
-              <div className="card-body">
-                <p>{r.ingredientLines.join(', ')}</p>
+              <div className="ingred-div">
+                <p className="text-green">{r.ingredientLines.join(', ')}</p>
               </div>
             </div>
             )}
