@@ -57,7 +57,7 @@ const App = () => {
         />
         <Route
           path="/recipes"
-          element={user ? <MyRecipes myRecipes={myRecipes} /> : <Navigate to="/login" />}
+          element={user ? <MyRecipes myRecipes={myRecipes} user={user}/> : <Navigate to="/login" />}
         />
         <Route
           path="/search"

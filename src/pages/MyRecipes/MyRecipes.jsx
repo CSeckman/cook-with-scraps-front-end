@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react'
+import * as recipeService from '../../services/recipesService'
 
 const MyRecipes = ( props ) => {
   const [allMyRecipes, setRecipes] = useState([])
-
+  
   useEffect(()=> {
-    setRecipes(props.myRecipes)
+    recipeService.getMyRecipes(props.user)
+    .then(recipes => {
+      setRecipes(recipes)
+    })
   }, [])
 
   return (
