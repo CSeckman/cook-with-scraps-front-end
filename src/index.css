@@ -47,7 +47,7 @@ code {
   justify-content: space-evenly;
 }
 
-img {
+.object-fill {
   max-width: 200px;
 }
 
@@ -57,4 +57,13 @@ img {
 
 .border-double {
   padding: 2px 7px;
+}
+
+.header-img-div {
+  display: flex;
+  justify-content: center;
+}
+
+.header-img {
+  width: 500px !important;
 }
